@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="propform">
+    <h1> Add New Property </h1>
+    {% include 'flash_messages.html' %}
+    <form action="{{ url_for('property') }}" method="POST" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+
+      <div class="form-all" id="ptitle">
+        {{ form.ptitle.label }}
+        {{ form.ptitle(class="form-edit") }}
+      </div>
+
+      <div class="form-all" id="description">
+        {{ form.description.label }}
+        {{ form.description(class="form-edit") }}
+      </div>
+
+      <div id="roomsandbathrooms">
+        <div class="form-all" id="rooms">
+          {{ form.rooms.label }}
+          {{ form.rooms(class="form-edit") }}
+        </div>
+  
+        <div class="form-all" id="bathrooms">
+          {{ form.bathrooms.label }}
+          {{ form.bathrooms(class="form-edit") }}
+        </div>
+
+        <div class="form-all" id="price">
+          {{ form.price.label }}
+          {{ form.price(class="form-edit") }}
+        </div>
+  
+        <div class="form-all" id="ptype">
+            {{ form.ptype.label }} 
+            <div class="form-all">
+                <select name="ptype"> 
+                    {% for ptype in ptype %}
+                    <option value= "{{ptype}}" SELECTED>{{ptype}}</option>"
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+      </div>
+      
+      <div class="form-all" id="location">
+        {{ form.location.label }}
+        {{ form.location(class="form-edit") }}
+      </div>
+
+    
+        <div class="form-all" id="photo">
+         
+          {{ form.photo.label }}
+          {{ form.photo }} 
+      </div>
+
+      
+      <button type="submit" id="addbtn">Add Property</button>
+    </form>
+
+  </div>
+
+{% endblock %}

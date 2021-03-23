@@ -1,3 +1,221 @@
 body {
+    background-color: rgb(243, 242, 242);
     padding-top: 50px;
+}
+
+h1{
+    padding-top:20px;
+    font-weight: bold;
+}
+
+
+#ptitle, #description{
+    width:850px;
+}
+
+#description{
+    height:100px;
+}
+
+.form-edit{
+    box-shadow: 1px 1px 1px 1px lightgray;
+    border: 1px solid lightgray;
+    padding: 6px;
+    border-radius: 5px 5px 5px 5px;
+    height: 45px;
+}
+
+.form-all{
+    margin-bottom: 20px;
+}
+
+.propform{
+    font-weight:bold;
+}
+
+form{
+    background-color: white;
+    padding:50px;
+}
+
+#rooms,#bathrooms,#price,#location{
+    width:400px;
+}
+
+
+#roomsandbathrooms{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    column-gap: 250px;
+    padding-top: 30px;
+
+}
+select{
+    width:400px;
+    height:45px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#photo{
+    width:300px;
+}
+
+
+
+#addbtn{
+    width:150px;
+    color: white;
+    background-color: rgb(65, 110, 231);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+img{
+    width:60%;
+    height:60%;
+    object-fit: cover;
+}
+
+.properties{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 50px;
+    padding-bottom: 50px;
+}
+
+.properties img{
+    width: 100%;
+}
+
+.oneproperty{
+    background-color: white;
+    text-align: center;
+    height: 90%;
+}
+
+.utitle,.uprice,.ulocation{
+    text-align: left;
+    padding-left:10px;
+}
+
+.utitle{
+    margin-left: 15px;
+    font-weight:bold;
+}
+
+.ulocation{
+    color: gray;
+}
+
+.ulocation img{
+    width:20px;
+    height:20px;
+}
+
+.uprice{
+    background-color:#5195df;
+    width:105px;
+    margin-bottom:10px;
+    border-radius:15px;
+    margin-left:20px;
+    color:white;
+    margin-top:5px;
+}
+
+.viewbtn{
+    background-color:turquoise;
+    color: white; 
+    height: 15%;
+    padding-top: 12px;
+}
+
+#vbtn{
+    color: white;
+    font-weight: 500;
+    width: 100%;
+    display: block;
+}
+
+.property{
+    display:grid;
+    grid-template-columns: 370px 370px;
+    padding-top:100px;
+    margin-left:200px;
+}
+
+.property img{
+    width:370px;
+    height:300px;
+}
+
+.propertyinfo{
+    background-color: white;
+    margin-right:100px;
+    width:450px;
+    padding-left:20px;
+}
+
+.propertyinfo img{
+    width:20px;
+    height:20px;
+}
+
+.titleinfo{
+    font-weight: bold;
+    font-size: medium;
+    padding-top: 20px;
+}
+
+.pricetypeinfo{
+    display:grid;
+    grid-template-columns: 105px 105px;
+    column-gap:1px;
+    padding-top: 10px;
+}
+
+#priceinfo{
+    background-color: #308aeb;
+    width:95px;
+    text-align: center;
+    color:white;
+    border-radius:15px;
+    padding: 3px;
+}
+
+#typeinfo{
+    background-color: #ffc107;
+    width:95px;
+    color:white;
+    text-align: center;
+    border-radius:15px;
+    margin-right:40px;
+    padding: 3px;
+}
+
+.descriptioninfo{
+  padding-top:15px;
+}
+
+#roomsinfo{
+    display:grid;
+    grid-template-columns:140px 140px;
+    padding-top: 10px;
+}
+
+#locationinfo{
+    padding-top:15px;
+}
+
+.emailbtn{
+    width:150px;
+    height:40px;
+    margin-top:20px;
+    background-color: rgb(63, 187, 175);
+    color:white;
+    border-radius: 4px;
 }

@@ -5,9 +5,13 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app
-from flask import render_template, request, redirect, url_for
-
+import os
+from app import app, db
+from app.config import *
+from flask import render_template, request, redirect, url_for, flash, session, abort, send_from_directory
+from app.models import PropertyProfile
+from app.forms import PropertyForm
+from werkzeug.utils import secure_filename
 
 ###
 # Routing for your application.
@@ -18,12 +22,45 @@ def home():
     """Render website's home page."""
     return render_template('home.html')
 
-
 @app.route('/about/')
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
+@app.route("/property", methods=["GET", "POST"])
+def property():
+    form = PropertyForm()
+    ptype = ['House', 'Apartment']
+    if request.method == "POST":
+        if form.validate_on_submit:
+            photo = form.photo.data
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            user = PropertyProfile(ptitle=form.ptitle.data, pdescription=form.description.data, 
+            rooms=form.rooms.data, bathrooms=form.bathrooms.data, price=form.price.data, 
+            ptype=form.ptype.data, location=form.location.data, filename=filename)
+            db.session.add(user)
+            db.session.commit()
+            flash("Property was added successfully")
+            return redirect(url_for("properties"))
+        else:
+            flash("An error has occurred. Please try again.")
+    return render_template("property.html", form=form, ptype=ptype)
+
+@app.route("/properties")
+def properties():
+    users = PropertyProfile.query.all()
+    return render_template("properties.html", users=users)
+
+@app.route("/properties/<propertyid>")
+def viewproperty(propertyid):
+    user = PropertyProfile.query.get(propertyid)
+    return render_template("viewproperty.html", user=user)
+
+@app.route("/images/<filename>")
+def get_image(filename):
+    rootdir = os.getcwd()
+    return send_from_directory(rootdir + "/" + app.config['UPLOAD_FOLDER'], filename)
 
 ###
 # The functions below should be applicable to all Flask apps.
